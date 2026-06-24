@@ -3,168 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Gallery</title>
+    <title>GLM Restaurant Gallery</title>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6),
+            rgba(0,0,0,0.6)),
+            url('restaurant.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-weight: bold;
+        }
+
+        /* Navbar */
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 50px;
+        }
+    </style>
 </head>
+
 <body>
+
+<!-- Navbar -->
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="gallery.html">Gallery</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <a class="navbar-brand" href="index.html">
+                GLM RESTAURANT
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav">
+
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+            <div class="collapse navbar-collapse"
+                 id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="gallery.html">Gallery</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="feedback.html">Feedback</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+
                 </ul>
+
             </div>
         </div>
     </nav>
 </header>
 
+<!-- Hero Banner -->
+<section class="hero">
+    <div class="container">
+        <h1 class="display-4">Food Gallery</h1>
+        <p class="lead">
+            Explore our delicious meals, desserts, and chef specials.
+        </p>
+    </div>
+</section>
+
+<!-- Gallery -->
 <main class="container my-5">
-    <section id="main-gallery" class="py-4">
-        <h2 class="text-center mb-4">Main Meals Gallery</h2>
-        <div class="row g-4">
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="grilled chicken.jpg" class="card-img-top" alt="Grilled Chicken Salad">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Grilled Chicken Salad</h5>
-                        <p class="card-text text-center">Chicken breast, mixed greens, cherry tomatoes, cucumber, balsamic vinaigrette.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="cheeseburger.jpg" class="card-img-top" alt="Classic Cheeseburger">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Classic Cheeseburger</h5>
-                        <p class="card-text text-center">Beef patty, cheddar cheese, lettuce, tomato, pickles, sesame bun.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="margherita pizza.jpg" class="card-img-top" alt="Margherita Pizza">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Margherita Pizza</h5>
-                        <p class="card-text text-center">Fresh mozzarella, tomatoes, basil, olive oil, pizza dough.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="fish and chips.jpg" class="card-img-top" alt="Fish and Chips">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Fish and Chips</h5>
-                        <p class="card-text text-center">White fish fillets, potatoes, flour, eggs, breadcrumbs, tartar sauce.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="steak.jpg" class="card-img-top" alt="Grilled Steak">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Grilled Steak</h5>
-                        <p class="card-text text-center">Beef steak, garlic, rosemary, olive oil, salt, pepper.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="spaghetti bolognese.jpg" class="card-img-top" alt="Spaghetti Bolognese">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Spaghetti Bolognese</h5>
-                        <p class="card-text text-center">Spaghetti, ground beef, tomato sauce, onions, garlic, parmesan cheese.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="caesar salad.jpg" class="card-img-top" alt="Caesar Salad">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Caesar Salad</h5>
-                        <p class="card-text text-center">Romaine lettuce, croutons, parmesan, Caesar dressing, anchovies.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="pancakes.jpg" class="card-img-top" alt="Pancakes">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Pancakes</h5>
-                        <p class="card-text text-center">Flour, eggs, milk, butter, maple syrup, baking powder.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="chocolate mousse.jpg" class="card-img-top" alt="Chocolate Mousse">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Chocolate Mousse</h5>
-                        <p class="card-text text-center">Dark chocolate, heavy cream, eggs, sugar, vanilla extract.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="apple pie.jpg" class="card-img-top" alt="Apple Pie">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Apple Pie</h5>
-                        <p class="card-text text-center">Apples, cinnamon, nutmeg, sugar, pie crust, butter.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="cheesecake.jpg" class="card-img-top" alt="Cheesecake">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Cheesecake</h5>
-                        <p class="card-text text-center">Cream cheese, graham crackers, sugar, vanilla extract, eggs.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="tiramusa.jpg" class="card-img-top" alt="Tiramisu">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Tiramisu</h5>
-                        <p class="card-text text-center">Ladyfingers, mascarpone, coffee, cocoa powder, sugar.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <img src="brownies.jpg" class="card-img-top" alt="Brownies">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Brownies</h5>
-                        <p class="card-text text-center">Cocoa powder, flour, butter, sugar, eggs, vanilla extract.</p>
-                         </div>
+
+    <h2 class="text-center mb-5">
+        🍽️ Main Meals & Desserts
+    </h2>
+
+    <div class="row g-4">
+
+        <!-- Card 1 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="grilled chicken.jpg" class="card-img-top" alt="Grilled Chicken Salad">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Grilled Chicken Salad</h5>
+                    <p class="card-text text-center">
+                        Chicken breast, mixed greens, cherry tomatoes,
+                        cucumber, balsamic vinaigrette.
+                    </p>
                 </div>
             </div>
         </div>
-    
-             
-    </section>
+
+        <!-- Card 2 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="cheeseburger.jpg" class="card-img-top" alt="Cheeseburger">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Classic Cheeseburger</h5>
+                    <p class="card-text text-center">
+                        Beef patty, cheddar cheese, lettuce, tomato,
+                        pickles, sesame bun.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="margherita pizza.jpg" class="card-img-top" alt="Pizza">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Margherita Pizza</h5>
+                    <p class="card-text text-center">
+                        Fresh mozzarella, tomatoes, basil,
+                        olive oil, pizza dough.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="fish and chips.jpg" class="card-img-top" alt="Fish and Chips">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Fish and Chips</h5>
+                    <p class="card-text text-center">
+                        Crispy fish fillets served with golden fries
+                        and tartar sauce.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="steak.jpg" class="card-img-top" alt="Steak">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Grilled Steak</h5>
+                    <p class="card-text text-center">
+                        Tender grilled steak seasoned with herbs
+                        and spices.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="spaghetti bolognese.jpg" class="card-img-top" alt="Spaghetti">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Spaghetti Bolognese</h5>
+                    <p class="card-text text-center">
+                        Classic spaghetti topped with rich meat sauce.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="caesar salad.jpg" class="card-img-top" alt="Caesar Salad">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Caesar Salad</h5>
+                    <p class="card-text text-center">
+                        Fresh romaine lettuce, parmesan cheese,
+                        and croutons.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="pancakes.jpg" class="card-img-top" alt="Pancakes">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Pancakes</h5>
+                    <p class="card-text text-center">
+                        Fluffy pancakes served with maple syrup.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="chocolate mousse.jpg" class="card-img-top" alt="Chocolate Mousse">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Chocolate Mousse</h5>
+                    <p class="card-text text-center">
+                        Rich and creamy chocolate dessert.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="apple pie.jpg" class="card-img-top" alt="Apple Pie">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Apple Pie</h5>
+                    <p class="card-text text-center">
+                        Traditional apple pie with cinnamon filling.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="cheesecake.jpg" class="card-img-top" alt="Cheesecake">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Cheesecake</h5>
+                    <p class="card-text text-center">
+                        Creamy cheesecake with a buttery biscuit base.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <img src="tiramisu.jpg" class="card-img-top" alt="Tiramisu">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Tiramisu</h5>
+                    <p class="card-text text-center">
+                        Italian coffee-flavored dessert with mascarpone.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </main>
 
+<!-- Footer -->
 <footer class="bg-dark text-light text-center py-3">
-    <p>&copy; 2025 GLM Restaurant. All rights reserved.</p>
+    <p>&copy; 2025 GLM Restaurant. All Rights Reserved.</p>
 </footer>
 
-<!-- Bootstrap JS and dependencies -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
