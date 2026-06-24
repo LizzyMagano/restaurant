@@ -3,204 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Menu</title>
+    <title>GLM Restaurant Menu</title>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6),
+            rgba(0,0,0,0.6)),
+            url('restaurant-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        /* Cards */
+        .menu-card {
+            border: none;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .menu-card img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .price-tag {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .badge-special {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        footer {
+            background-color: #212529;
+            color: white;
+        }
+
+        .btn-order {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+    </style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">GLM Restaurant</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Food Section -->
-        <section class="py-4">
-            <div class="container">
-                <h2 class="text-center mb-4">Food Menu</h2>
-                <div class="row g-4">
-                    <!-- Food Items -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="grilled chicken.jpg" class="card-img-top" alt="Grilled Chicken Salad">
-                            <div class="card-body">
-                                <h5 class="card-title">Grilled Chicken Salad</h5>
-                                <p class="card-text">Fresh greens with grilled chicken, tomatoes, and a balsamic vinaigrette.</p>
-                                <p class="text-lg font-semibold">P90.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="cheeseburger.jpg" class="card-img-top" alt="Classic Cheeseburger">
-                            <div class="card-body">
-                                <h5 class="card-title">Classic Cheeseburger</h5>
-                                <p class="card-text">Juicy beef patty with cheddar cheese, lettuce, and tomato on a toasted bun.</p>
-                                <p class="text-lg font-semibold">P100.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="margherita pizza.jpg" class="card-img-top" alt="Margherita Pizza">
-                            <div class="card-body">
-                                <h5 class="card-title">Margherita Pizza</h5>
-                                <p class="card-text">Classic pizza with fresh mozzarella, tomatoes, and basil.</p>
-                                <p class="text-lg font-semibold">P200.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="chicken alfredo pasta.jpg" class="card-img-top" alt="Chicken Alfredo Pasta">
-                            <div class="card-body">
-                                <h5 class="card-title">Chicken Alfredo Pasta</h5>
-                                <p class="card-text">Creamy Alfredo sauce over tender fettuccine with grilled chicken and parmesan.</p>
-                                <p class="text-lg font-semibold">P150.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="bbq ribs.jpg" class="card-img-top" alt="BBQ Ribs">
-                            <div class="card-body">
-                                <h5 class="card-title">BBQ Ribs</h5>
-                                <p class="card-text">Succulent ribs slathered in tangy BBQ sauce, served with coleslaw.</p>
-                                <p class="text-lg font-semibold">P250.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="caesar salad.jpg" class="card-img-top" alt="Caesar Salad">
-                            <div class="card-body">
-                                <h5 class="card-title">Caesar Salad</h5>
-                                <p class="card-text">Crisp romaine lettuce, croutons, and Caesar dressing topped with parmesan.</p>
-                                <p class="text-lg font-semibold">P80.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="fish and chips.jpg" class="card-img-top" alt="Fish and Chips">
-                            <div class="card-body">
-                                <h5 class="card-title">Fish and Chips</h5>
-                                <p class="card-text">Crispy battered fish served with golden fries and tartar sauce.</p>
-                                <p class="text-lg font-semibold">P180.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="beef stroganoff.jpg" class="card-img-top" alt="Beef Stroganoff">
-                            <div class="card-body">
-                                <h5 class="card-title">Beef Stroganoff</h5>
-                                <p class="card-text">Tender beef in a creamy mushroom sauce over egg noodles.</p>
-                                <p class="text-lg font-semibold">P200.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="apple pie.jpg" class="card-img-top" alt="Apple Pie">
-                            <div class="card-body">
-                                <h5 class="card-title">Apple Pie</h5>
-                                <p class="card-text">Classic dessert with spiced apple filling and a flaky crust.</p>
-                                <p class="text-lg font-semibold">P60.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">GLM Restaurant</a>
 
-        <!-- Drinks Section -->
-        <section class="py-4">
-            <div class="container">
-                <h2 class="text-center mb-4">Drinks Menu</h2>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="coffee.jpg" class="card-img-top" alt="Freshly Brewed Coffee">
-                            <div class="card-body">
-                                <h5 class="card-title">Freshly Brewed Coffee</h5>
-                                <p class="card-text">Rich and aromatic, brewed to perfection.</p>
-                                <p class="text-lg font-semibold">P40.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="iced tea.jpg" class="card-img-top" alt="Iced Tea">
-                            <div class="card-body">
-                                <h5 class="card-title">Iced Tea</h5>
-                                <p class="card-text">Refreshing tea with a hint of lemon and sweetness.</p>
-                                <p class="text-lg font-semibold">P20.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="smoothie.jpg" class="card-img-top" alt="Fruit Smoothie">
-                            <div class="card-body">
-                                <h5 class="card-title">Fruit Smoothie</h5>
-                                <p class="card-text">A blend of fresh fruits and yogurt for a healthy treat.</p>
-                                <p class="text-lg font-semibold">P90.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="cocktail.jpg" class="card-img-top" alt="Classic Cocktail">
-                            <div class="card-body">
-                                <h5 class="card-title">Classic Cocktail</h5>
-                                <p class="card-text">A perfectly balanced cocktail with a citrus twist.</p>
-                                <p class="text-lg font-semibold">P100.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Call to Action buttons -->
-        <div class="text-center my-5">
-            <a href="gallery.html" class="btn btn-primary">Explore more meals</a>
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse"
+             id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link active" href="menu.html">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
         </div>
-               <!-- New Order Now Button -->
-        <div class="text-center my-5">
-            <a href="contact.html" class="btn btn-success">Order Now</a>
-        </div>  
-        </section>
-    </main>
+    </div>
+</nav>
 
-    <!-- Footer -->
-    <footer class="text-center py-3 bg-dark text-white">
-        <p>&copy; 2025 GLM Restaurant. All rights reserved.</p>
-    </footer>
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>Delicious Food & Refreshing Drinks</h1>
+        <p>Experience the best meals prepared with love and fresh ingredients.</p>
+    </div>
+</section>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<!-- Search Bar -->
+<div class="container my-5">
+    <input type="text" class="form-control form-control-lg"
+        placeholder="Search for your favorite meal...">
+</div>
+
+<!-- Food Menu -->
+<section class="py-5 bg-light">
+    <div class="container">
+
+        <h2 class="text-center section-title">🍽️ Food Menu</h2>
+
+        <div class="row g-4">
+
+            <!-- Grilled Chicken Salad -->
+            <div class="col-md-4">
+                <div class="card menu-card shadow-sm">
+                    <img src="grilled chicken.jpg" alt="Grilled Chicken Salad">
+                    <div class="card-body">
+                        <h5>Grilled Chicken Salad</h5>
+                        <p>Fresh greens with grilled chicken, tomatoes and balsamic vinaigrette.</p>
+                        <span class="badge bg-success price-tag">P90.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cheeseburger -->
+            <div class="col-md-4">
+                <div class="card menu-card shadow-sm position-relative">
+                    <span class="badge bg-danger badge-special">Best Seller</span>
+                    <img src="cheeseburger.jpg" alt="Classic Cheeseburger">
+                    <div class="card-body">
+                        <h5>Classic Cheeseburger</h5>
+                        <p>Juicy beef patty with cheddar cheese, lettuce and tomato.</p>
+                        <span class="badge bg-success price-tag">P100.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza -->
+            <div class="col-md-4">
+                <div class="card menu-card shadow-sm position-relative">
+                    <span class="badge bg-warning text-dark badge-special">Popular</span>
+                    <img src="margherita pizza.jpg" alt="Margherita Pizza">
+                    <div class="card-body">
+                        <h5>Margherita Pizza</h5>
+                        <p>Classic pizza with mozzarella, tomatoes and basil.</p>
+                        <span class="badge bg-success price-tag">P200.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chicken Alfredo -->
+            <div class="col-md-4">
+                <div class="card menu-card shadow-sm">
+                    <img src="chicken alfredo pasta.jpg" alt="Chicken Alfredo Pasta">
+                    <div class="card-body">
+                        <h5>Chicken Alfredo Pasta</h5>
+                        <p>Creamy Alfredo sauce over tender fettuccine and grilled chicken.</p>
+                        <span class="badge bg-success price-tag">P150.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BBQ Ribs -->
+            <div class="col-md-4">
+                <div class="card menu-card shadow-sm position-relative">
+                    <span class="badge bg-danger badge-special">Chef's Choice</span>
+                    <img src="bbq ribs.jpg" alt="BBQ Ribs">
+                    <div class="card-body">
+                        <h5>BBQ Ribs</h5>
+                        <p>Succulent ribs glazed with BBQ sauce and served with coleslaw.</p>
+                        <span class="badge bg-success price-tag">P250.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caesar Salad -->
+            <div class="col-md-4">
+                <div class="card menu-card shadow-sm">
+                    <img src="caesar salad.jpg" alt="Caesar Salad">
+                    <div class="card-body">
+                        <h5>Caesar Salad</h5>
+                        <p>Crisp romaine lettuce, parmesan cheese and croutons.</p>
+                        <span class="badge bg-success price-tag">P80.00</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Drinks Menu -->
+<section class="py-5 bg-white">
+    <div class="container">
+
+        <h2 class="text-center section-title">🥤 Drinks Menu</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="card menu-card shadow-sm">
+                    <img src="coffee.jpg" alt="Coffee">
+                    <div class="card-body">
+                        <h5>Fresh Coffee</h5>
+                        <p>Rich and aromatic coffee brewed to perfection.</p>
+                        <span class="badge bg-success">P40.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card menu-card shadow-sm">
+                    <img src="iced tea.jpg" alt="Iced Tea">
+                    <div class="card-body">
+                        <h5>Iced Tea</h5>
+                        <p>Refreshing tea with a hint of lemon.</p>
+                        <span class="badge bg-success">P20.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card menu-card shadow-sm">
+                    <img src="smoothie.jpg" alt="Smoothie">
+                    <div class="card-body">
+                        <h5>Fruit Smoothie</h5>
+                        <p>Fresh fruits blended with creamy yogurt.</p>
+                        <span class="badge bg-success">P90.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card menu-card shadow-sm">
+                    <img src="cocktail.jpg" alt="Cocktail">
+                    <div class="card-body">
+                        <h5>Classic Cocktail</h5>
+                        <p>A refreshing cocktail with a citrus twist.</p>
+                        <span class="badge bg-success">P100.00</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="text-center mt-5">
+            <a href="gallery.html" class="btn btn-outline-primary btn-lg me-3">
+                View Gallery
+            </a>
+
+            <a href="contact.html" class="btn btn-success btn-lg btn-order">
+                Order Now
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4">
+    <div class="container">
+        <h5>GLM Restaurant</h5>
+        <p>Delicious food, unforgettable experiences.</p>
+        <p>&copy; 2025 GLM Restaurant. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
 
