@@ -1,144 +1,850 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact · Bistro Delight</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background: #fdf6ee;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+    }
+    .navbar-brand i {
+      color: #e67e22;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+      padding: 40px 0 30px;
+      text-align: center;
+    }
+    .hero-section h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+    .hero-section .subtitle {
+      opacity: 0.8;
+      font-size: 1.1rem;
+    }
+
+    .contact-card {
+      max-width: 780px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 2rem 1.8rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-header {
+      background: linear-gradient(145deg, #1e2329, #2b3138);
+      color: white;
+      border-radius: 24px 24px 0 0;
+      padding: 1.6rem 2rem;
+      margin: -2rem -2rem 1.8rem -2rem;
+    }
+    .contact-header h1 {
+      font-weight: 600;
+      font-size: 1.9rem;
+    }
+
+    .mode-pill {
+      background: #edf2f9;
+      border-radius: 60px;
+      padding: 4px 6px;
+      display: inline-flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .mode-pill .btn-sm {
+      border-radius: 40px;
+      padding: 6px 18px;
+      font-weight: 500;
+      border: none;
+      background: transparent;
+      color: #2c3e50;
+    }
+    .mode-pill .btn-sm.active-mode {
+      background: #e67e22;
+      color: white;
+    }
+    .mode-pill .btn-sm i {
+      margin-right: 6px;
+    }
+
+    .chat-preview-box {
+      background: #f2f4f8;
+      border-radius: 20px;
+      padding: 40px 20px;
+      text-align: center;
+      border: 2px dashed #d9e0e8;
+      transition: all 0.3s ease;
+    }
+    .chat-preview-box.chat-active {
+      border: 2px solid #25D366;
+      background: #f0faf4;
+    }
+    .chat-preview-box i {
+      font-size: 3rem;
+      color: #25D366;
+      margin-bottom: 1rem;
+    }
+    .chat-preview-box .chat-status {
+      display: none;
+      color: #25D366;
+      font-weight: 600;
+    }
+    .chat-preview-box.chat-active .chat-status {
+      display: block;
+    }
+    .chat-preview-box.chat-active .chat-prompt {
+      display: none;
+    }
+
+    .btn-live-chat {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: 0.15s;
+      cursor: pointer;
+    }
+    .btn-live-chat:hover {
+      background: #1da851;
+      color: white;
+      transform: scale(1.03);
+    }
+
+    .faq-item {
+      background: #f8fafc;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      border: 1px solid #eef2f7;
+    }
+    .faq-item:hover {
+      border-color: #d0d9e6;
+    }
+    .faq-question {
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      color: #1a1a2e;
+      user-select: none;
+    }
+    .faq-question:hover {
+      color: #e67e22;
+    }
+    .faq-question .faq-toggle {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-question .faq-toggle {
+      transform: rotate(180deg);
+      color: #e67e22;
+    }
+    .faq-answer {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      padding: 0 18px 16px 18px;
+      max-height: 500px;
+    }
+
+    .info-box {
+      background: #f0f3f8;
+      border-radius: 18px;
+      padding: 1rem 1.4rem;
+      border-left: 5px solid #e67e22;
+    }
+    .info-box i {
+      width: 28px;
+      color: #e67e22;
+    }
+
+    .chat-bubble {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: #25D366;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+      z-index: 99998;
+      transition: all 0.3s ease;
+      border: none;
+      color: white;
+      font-size: 2rem;
+    }
+    .chat-bubble:hover {
+      transform: scale(1.1);
+    }
+    .chat-bubble .badge-notification {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff4444;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.7rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .chat-bubble.active-bubble {
+      display: flex;
+      animation: bounceIn 0.5s ease;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    #fullscreenChatOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f2f4f8;
+      z-index: 99999;
+      display: none;
+      flex-direction: column;
+      animation: slideUp 0.3s ease;
+    }
+    #fullscreenChatOverlay.active {
+      display: flex;
+    }
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .fullscreen-chat-header {
+      background: linear-gradient(145deg, #1e2329, #2b3138);
+      color: white;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+    .fullscreen-chat-header .chat-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .fullscreen-chat-header .chat-avatar {
+      width: 44px;
+      height: 44px;
+      background: #e67e22;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .fullscreen-chat-header .chat-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .fullscreen-chat-header .chat-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+    .fullscreen-chat-header .close-chat-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: 0.15s;
+    }
+    .fullscreen-chat-header .close-chat-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .fullscreen-chat-body {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    #tawkToContainer {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .tawk-min-container {
+      display: none !important;
+    }
+
+    .quick-footer {
+      border-top: 1px solid #eef2f7;
+      padding-top: 1.2rem;
+      margin-top: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: #e67e22;
+      box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.25);
+    }
+    .btn-primary {
+      background: #e67e22;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #d35400;
+    }
+
+    @media (max-width: 576px) {
+      .contact-card {
+        padding: 1.2rem;
+      }
+      .contact-header {
+        margin: -1.2rem -1.2rem 1.5rem -1.2rem;
+        padding: 1.2rem;
+      }
+      .fullscreen-chat-header {
+        padding: 12px 16px;
+      }
+      .chat-bubble {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+      }
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="contact.html">Contact Us</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="fas fa-utensils me-2"></i>Bistro Delight
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <main class="container my-5">
-        <h1 class="text-center mb-4">Contact Us</h1>
-        <p>If you'd like to get in touch, feel free to email me at <a href="mailto:maganolizzy79@gmail.com">maganolizzy79@gmail.com</a>.</p>
-        
-        <!-- Customer Assistance Form -->
-        <form id="contactForm">
-            <div class="mb-3">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
-            </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
-            </div>
-            <div class="mb-3">
-                <label for="assistance" class="form-label">How can we assist you?</label>
-                <select class="form-select" id="assistance" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="order">Order</option>
-                    <option value="reserve">Reserve a Table</option>
-                </select>
-            </div>
-            <!-- Dynamic Options -->
-            <div id="dynamic-options" class="mb-3" style="display: none;"></div>
-            
-            <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-        <div id="submissionMessage" class="alert alert-success mt-4" style="display: none;">
-            Your request has been submitted successfully!
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="container">
+      <h1><i class="fas fa-utensils me-2"></i>Bistro Delight</h1>
+      <p class="subtitle">Fresh, delicious meals prepared with love. Dine in or take away!</p>
+      <div class="mt-3">
+        <span class="badge bg-success me-2"><i class="fas fa-circle me-1" style="font-size: 0.5rem;"></i> Open Now</span>
+        <span class="badge bg-warning text-dark">Mon–Sat: 9am – 9pm</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / LIVE CHAT SECTION -->
+  <div class="container" id="contact">
+    <div class="contact-card">
+
+      <div class="contact-header d-flex align-items-center justify-content-between flex-wrap">
+        <div>
+          <h1><i class="fas fa-comment-dots me-2"></i>Contact Us</h1>
+          <p class="mb-0 opacity-75" style="font-size: 0.95rem;">We're here to help! Chat, call, or email us.</p>
         </div>
-    </main>
+        <span class="badge bg-success bg-opacity-25 text-light px-3 py-2 rounded-pill">
+          <i class="fas fa-circle text-success me-1" style="font-size: 0.6rem;"></i> online
+        </span>
+      </div>
 
-    <footer class="text-center py-3 bg-dark text-white">
-        <p>&copy; 2025 Lizzy Magano</p>
-    </footer>
+      <div class="d-flex align-items-center justify-content-between flex-wrap mb-4">
+        <div class="mode-pill" id="modePill">
+          <button class="btn-sm active-mode" data-mode="chat" onclick="switchMode('chat')"><i class="fas fa-comment-dots"></i> Live Chat</button>
+          <button class="btn-sm" data-mode="email" onclick="switchMode('email')"><i class="fas fa-envelope"></i> Email</button>
+          <button class="btn-sm" data-mode="call" onclick="switchMode('call')"><i class="fas fa-phone-alt"></i> Call</button>
+        </div>
+        <span class="badge bg-secondary bg-opacity-10 text-secondary px-3 py-2 rounded-pill">
+          <i class="fas fa-clock me-1"></i> replies within 2 minutes
+        </span>
+      </div>
 
-    <script>
-        const assistanceSelect = document.getElementById('assistance');
-        const dynamicOptions = document.getElementById('dynamic-options');
-        const contactForm = document.getElementById('contactForm');
-        const submissionMessage = document.getElementById('submissionMessage');
+      <div id="contactPanel">
 
-        assistanceSelect.addEventListener('change', () => {
-            const selectedOption = assistanceSelect.value;
+        <!-- LIVE CHAT Panel -->
+        <div id="chatPanel">
+          <div class="chat-preview-box" id="chatPreviewBox">
+            <i class="fas fa-comment-dots"></i>
+            <div class="chat-prompt">
+              <h5 class="fw-bold">💬 Start a Live Chat</h5>
+              <p class="text-muted">Chat with us instantly about orders, reservations, or anything else!</p>
+              <button class="btn-live-chat" onclick="openFullscreenChat()">
+                <i class="fas fa-comment me-2"></i>Start Live Chat
+              </button>
+            </div>
+            <div class="chat-status">
+              <i class="fas fa-check-circle"></i>
+              <h5 class="fw-bold mt-2">Connected!</h5>
+              <p class="text-muted">Click the green bubble to reopen your chat</p>
+            </div>
+            <div class="mt-3 small text-muted">
+              <i class="fas fa-check-circle text-success me-1"></i> Average response time: 2 minutes
+            </div>
+            <div class="mt-2 small text-muted">
+              <i class="fas fa-lock me-1"></i> Your conversations are private & secure
+            </div>
+          </div>
 
-            // Clear dynamic options
-            dynamicOptions.innerHTML = '';
+          <!-- FAQ SECTION -->
+          <div class="mt-4">
+            <div style="font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 1rem;">
+              <i class="fas fa-question-circle me-2" style="color: #e67e22;"></i> Frequently Asked Questions
+            </div>
 
-            if (selectedOption === 'order') {
-                dynamicOptions.style.display = 'block';
-                dynamicOptions.innerHTML = `
-                    <label for="dishes" class="form-label">Select a Dish</label>
-                    <select class="form-select" id="dishes" required>
-                        <option value="" disabled selected>Select a dish</option>
-                        <option value="steak">Grilled Steak</option>
-                        <option value="pasta">Chicken Alfredo Pasta</option>
-                        <option value="burger">Cheeseburger</option>
-                        <option value="salad">Caesar Salad</option>
-                        <option value="brownies">Brownies</option>
-                        <option value="cake">Cheesecake</option>
-                        <option value="chocolate">Chocolate Mousse</option>
-                        <option value="bbq">BBQ Ribs</option>
-                        <option value="pie">Apple Pie</option>
-                        <option value="chips">Fish and Chips</option>
-                        <option value="chicken">Grilled chicken salad</option>
-                        <option value="pizza">Margherita pizza</option>
-                        <option value="spaghetti">Spaghetti bolognese</option>
-                        <option value="pancakes">Pancakes</option>
-                        <option value="tiramisu">Tiramisu</option>
-                        <option value="beef stroganoff">Beef stroganoff</option>
-                    </select>
-                `;
-            } else if (selectedOption === 'reserve') {
-                dynamicOptions.style.display = 'block';
-                dynamicOptions.innerHTML = `
-                    <label for="tables" class="form-label">Select a Table</label>
-                    <select class="form-select" id="tables" required>
-                        <option value="" disabled selected>Select a table number</option>
-                        <option value="table1">Table 1</option>
-                        <option value="table2">Table 2</option>
-                        <option value="table3">Table 3</option>
-                        <option value="table4">Table 4</option>
-                        <option value="table5">Table 5</option>
-                    </select>
-                `;
-            } else {
-                dynamicOptions.style.display = 'none';
-            }
-        });
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Do you offer takeaway / delivery?</span>
+                <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="faq-answer">
+                Yes! We offer both takeaway and delivery. Call us or order online through our website.
+              </div>
+            </div>
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            submissionMessage.style.display = 'block';
-            contactForm.reset();
-            dynamicOptions.style.display = 'none';
-        });
-    </script>
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Do I need to make a reservation?</span>
+                <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="faq-answer">
+                Reservations are recommended for dinner and weekends. Walk-ins are always welcome!
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span>What are your operating hours?</span>
+                <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="faq-answer">
+                We're open Monday to Saturday, 9am to 9pm. Closed on Sundays.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Do you cater for special dietary needs?</span>
+                <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="faq-answer">
+                Yes! We offer vegetarian, vegan, and gluten-free options. Please inform us of any allergies.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMAIL Panel -->
+        <div id="emailPanel" style="display: none;">
+          <div class="info-box mb-3">
+            <i class="fas fa-envelope-open-text"></i> We'll reply within 24 hours
+          </div>
+
+          <form id="contactForm" onsubmit="return submitForm()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="mb-3">
+              <label for="assistance" class="form-label">How can we assist you? <span class="text-danger">*</span></label>
+              <select class="form-select" id="assistance" onchange="updateDynamicOptions()" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="order">Order</option>
+                <option value="reserve">Reserve a Table</option>
+                <option value="general">General Inquiry</option>
+              </select>
+            </div>
+            <div id="dynamic-options" class="mb-3" style="display: none;"></div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" rows="3" placeholder="Tell us what you need..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane me-2"></i>Send</button>
+          </form>
+          <div id="submissionMessage" class="alert alert-success mt-3" style="display: none;">
+            <i class="fas fa-check-circle me-2"></i> Your request has been submitted successfully!
+          </div>
+          <div class="mt-2 small text-secondary">
+            <i class="fas fa-shield-alt me-1"></i> We treat your data with care
+          </div>
+        </div>
+
+        <!-- CALL Panel -->
+        <div id="callPanel" style="display: none;">
+          <div class="info-box mb-3">
+            <i class="fas fa-phone-alt"></i> Speak to our team · Mon–Sat 9am–9pm
+          </div>
+          <div class="p-4 bg-light rounded-4 text-center">
+            <i class="fas fa-phone fa-3x text-primary mb-3" style="color: #e67e22 !important;"></i>
+            <h4 class="fw-bold">+267 78 549 270</h4>
+            <p class="text-secondary">We're here to take your order or reservation</p>
+            <a href="tel:+26778549270" class="btn btn-success btn-lg px-5" style="background: #25D366; border: none;"><i class="fas fa-phone me-2"></i>Call now</a>
+          </div>
+          <div class="mt-3 text-center small text-secondary">
+            <i class="fas fa-voicemail me-1"></i> If busy, leave a voicemail or send a message
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-footer">
+        <span><i class="fas fa-store me-1"></i> Bistro Delight</span>
+        <span><i class="fas fa-envelope me-1"></i> bistro@example.com</span>
+        <span><i class="fas fa-phone me-1"></i> +267 78 549 270</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT BUBBLE -->
+  <button class="chat-bubble" id="chatBubble" onclick="openFullscreenChat()" title="Open chat">
+    <i class="fas fa-comment-dots"></i>
+    <span class="badge-notification" id="notificationBadge">1</span>
+  </button>
+
+  <!-- FULLSCREEN CHAT OVERLAY -->
+  <div id="fullscreenChatOverlay">
+    <div class="fullscreen-chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <div>
+          <div class="chat-title">Bistro Delight</div>
+          <div class="chat-subtitle"><i class="fas fa-circle text-success me-1" style="font-size: 0.5rem;"></i> Online · Usually replies in 2min</div>
+        </div>
+      </div>
+      <button class="close-chat-btn" onclick="closeFullscreenChat()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="fullscreen-chat-body" id="fullscreenChatBody">
+      <div id="tawkToContainer"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+  <!-- Tawk.to LIVE CHAT SCRIPT -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+
+    Tawk_API.onChatStarted = function() {
+      showChatConnected();
+    };
+
+    Tawk_API.onChatMaximized = function() {
+      document.getElementById('fullscreenChatOverlay').classList.add('active');
+    };
+
+    Tawk_API.onChatMinimized = function() {
+      document.getElementById('fullscreenChatOverlay').classList.remove('active');
+    };
+
+    Tawk_API.onChatMessage = function(data) {
+      var badge = document.getElementById('notificationBadge');
+      var overlay = document.getElementById('fullscreenChatOverlay');
+      if (!overlay.classList.contains('active')) {
+        badge.style.display = 'flex';
+      }
+    };
+
+    (function() {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/6a3e44a6680a601d49f66eb1/1js1job27';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+
+    function showChatConnected() {
+      var previewBox = document.getElementById('chatPreviewBox');
+      previewBox.classList.add('chat-active');
+      var bubble = document.getElementById('chatBubble');
+      bubble.classList.add('active-bubble');
+    }
+  </script>
+
+  <!-- ========================================== -->
+  <!-- SIMPLE JAVASCRIPT - NO CONST, NO LET      -->
+  <!-- ========================================== -->
+  <script>
+    // ========================================== //
+    // FAQ TOGGLE                                 //
+    // ========================================== //
+    function toggleFaq(element) {
+      var faqItem = element.parentNode;
+      var isActive = faqItem.classList.contains('active');
+
+      // Close all FAQs
+      var allFaqs = document.getElementsByClassName('faq-item');
+      for (var i = 0; i < allFaqs.length; i++) {
+        allFaqs[i].classList.remove('active');
+      }
+
+      // Open clicked one if it wasn't active
+      if (!isActive) {
+        faqItem.classList.add('active');
+      }
+    }
+
+    // ========================================== //
+    // DYNAMIC FORM OPTIONS                       //
+    // ========================================== //
+    function updateDynamicOptions() {
+      var assistance = document.getElementById('assistance');
+      var selectedOption = assistance.value;
+      var dynamicOptions = document.getElementById('dynamic-options');
+
+      dynamicOptions.innerHTML = '';
+
+      if (selectedOption === 'order') {
+        dynamicOptions.style.display = 'block';
+        dynamicOptions.innerHTML = `
+              <label for="dishes" class="form-label">Select a Dish</label>
+              <select class="form-select" id="dishes" required>
+                <option value="" disabled selected>Select a dish</option>
+                <option value="steak">Grilled Steak</option>
+                <option value="pasta">Chicken Alfredo Pasta</option>
+                <option value="burger">Cheeseburger</option>
+                <option value="salad">Caesar Salad</option>
+                <option value="brownies">Brownies</option>
+                <option value="cake">Cheesecake</option>
+                <option value="chocolate">Chocolate Mousse</option>
+                <option value="bbq">BBQ Ribs</option>
+                <option value="pie">Apple Pie</option>
+                <option value="chips">Fish and Chips</option>
+                <option value="chicken">Grilled Chicken Salad</option>
+                <option value="pizza">Margherita Pizza</option>
+                <option value="spaghetti">Spaghetti Bolognese</option>
+                <option value="pancakes">Pancakes</option>
+                <option value="tiramisu">Tiramisu</option>
+                <option value="beef">Beef Stroganoff</option>
+              </select>
+            `;
+      } else if (selectedOption === 'reserve') {
+        dynamicOptions.style.display = 'block';
+        dynamicOptions.innerHTML = `
+              <label for="tables" class="form-label">Select a Table</label>
+              <select class="form-select" id="tables" required>
+                <option value="" disabled selected>Select a table number</option>
+                <option value="table1">Table 1</option>
+                <option value="table2">Table 2</option>
+                <option value="table3">Table 3</option>
+                <option value="table4">Table 4</option>
+                <option value="table5">Table 5</option>
+              </select>
+            `;
+      } else {
+        dynamicOptions.style.display = 'none';
+      }
+    }
+
+    // ========================================== //
+    // FORM SUBMIT                                //
+    // ========================================== //
+    function submitForm() {
+      var message = document.getElementById('submissionMessage');
+      message.style.display = 'block';
+
+      // Reset form after 5 seconds
+      setTimeout(function() {
+        document.getElementById('contactForm').reset();
+        document.getElementById('dynamic-options').style.display = 'none';
+        document.getElementById('dynamic-options').innerHTML = '';
+      }, 500);
+
+      // Hide message after 5 seconds
+      setTimeout(function() {
+        message.style.display = 'none';
+      }, 5000);
+
+      return false; // Prevent actual form submission
+    }
+
+    // ========================================== //
+    // MODE SWITCHING (Live Chat / Email / Call)  //
+    // ========================================== //
+    function switchMode(mode) {
+      var chatPanel = document.getElementById('chatPanel');
+      var emailPanel = document.getElementById('emailPanel');
+      var callPanel = document.getElementById('callPanel');
+      var modeBtns = document.querySelectorAll('#modePill .btn-sm');
+      var bubble = document.getElementById('chatBubble');
+      var previewBox = document.getElementById('chatPreviewBox');
+
+      // Hide all
+      chatPanel.style.display = 'none';
+      emailPanel.style.display = 'none';
+      callPanel.style.display = 'none';
+
+      // Show selected
+      if (mode === 'chat') {
+        chatPanel.style.display = 'block';
+      } else if (mode === 'email') {
+        emailPanel.style.display = 'block';
+      } else if (mode === 'call') {
+        callPanel.style.display = 'block';
+      }
+
+      // Update active class
+      for (var i = 0; i < modeBtns.length; i++) {
+        modeBtns[i].classList.remove('active-mode');
+        if (modeBtns[i].getAttribute('data-mode') === mode) {
+          modeBtns[i].classList.add('active-mode');
+        }
+      }
+
+      // Show/hide bubble
+      if (mode !== 'chat') {
+        bubble.classList.remove('active-bubble');
+        bubble.style.display = 'none';
+      } else {
+        if (previewBox.classList.contains('chat-active')) {
+          bubble.style.display = 'flex';
+          bubble.classList.add('active-bubble');
+        }
+      }
+    }
+
+    // ========================================== //
+    // FULLSCREEN CHAT CONTROLS                   //
+    // ========================================== //
+    function openFullscreenChat() {
+      var overlay = document.getElementById('fullscreenChatOverlay');
+      var previewBox = document.getElementById('chatPreviewBox');
+      var bubble = document.getElementById('chatBubble');
+      var badge = document.getElementById('notificationBadge');
+
+      overlay.classList.add('active');
+      previewBox.classList.add('chat-active');
+      bubble.classList.add('active-bubble');
+      badge.style.display = 'none';
+
+      setTimeout(function() {
+        if (typeof Tawk_API !== 'undefined') {
+          if (Tawk_API.toggle) Tawk_API.toggle();
+          if (Tawk_API.maximize) Tawk_API.maximize();
+        }
+      }, 300);
+    }
+
+    function closeFullscreenChat() {
+      var overlay = document.getElementById('fullscreenChatOverlay');
+      overlay.classList.remove('active');
+      if (typeof Tawk_API !== 'undefined' && Tawk_API.minimize) {
+        Tawk_API.minimize();
+      }
+    }
+
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+      var overlay = document.getElementById('fullscreenChatOverlay');
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        closeFullscreenChat();
+      }
+    });
+
+    // ========================================== //
+    // INIT - Set default mode                    //
+    // ========================================== //
+    // Start with chat mode active
+    switchMode('chat');
+  </script>
+
 </body>
-</html>
+
+    </html>
 
 
    
